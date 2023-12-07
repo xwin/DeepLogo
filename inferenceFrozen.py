@@ -3,22 +3,19 @@
 
 import numpy as np
 import os
-import sys
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from distutils.version import StrictVersion
-from collections import defaultdict
-from io import StringIO
+import matplotlib; matplotlib.use('Agg')  # pylint: disable=multiple-statements
 from matplotlib import pyplot as plt
 from PIL import Image
-from object_detection.utils import ops as utils_ops
 
 if StrictVersion(tf.__version__) < StrictVersion('1.12.0'):
   raise ImportError('Please upgrade your TensorFlow installation to v1.12.*.')
 
+from object_detection.utils import ops as utils_ops
 from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as vis_util
-
 import argparse
 
 def parse_arguments():
